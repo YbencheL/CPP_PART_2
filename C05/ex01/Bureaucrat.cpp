@@ -33,6 +33,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 
 Bureaucrat::~Bureaucrat()
 {
+    // std::cout << "Destructor called" << std::endl;
 }
 
 const std::string& Bureaucrat::getName() const
@@ -84,4 +85,14 @@ void Bureaucrat::signForm(Form& form)
         std::cout << getName() << " couldn’t sign " << form.getName()
                   << ", " << e.what() << std::endl;
     }
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low";
 }

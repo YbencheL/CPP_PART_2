@@ -27,9 +27,9 @@ void ShrubberyCreationForm::executeAction() const
 {
     std::string filename = getName() + "_shrubbery";
     std::ofstream outfile(filename.c_str());
-    if (!outfile)
+    if (!outfile.is_open())
     {
-        std::cerr << "ERROR OPENING OUTPUT FILE" << std::endl;
+        throw std::runtime_error("ERROR OPENING OUTPUT FILE");
         return;
     }
     outfile << "                                                 .  "<< std::endl;

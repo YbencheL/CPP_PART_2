@@ -12,7 +12,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& obj) : name(obj.name), grade(obj.grade)
 {
     if (grade > 150)
         throw GradeTooLowException();
-    else if (grade < 1)
+    else if (grade < 1) 
         throw GradeTooHighException();
 }
 
@@ -97,4 +97,14 @@ void Bureaucrat::executeForm(AForm const& form)
     {
         std::cerr << e.what() << std::endl;
     }
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low";
 }

@@ -2,6 +2,7 @@
 
 int main()
 {
+    std::cout << "====Success tests====\n";
     try
     {
         Bureaucrat a("yass", 20);
@@ -12,6 +13,7 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
+    std::cout << "\n====Fail tests====\n";
     try
     {
         Bureaucrat v("vass", 1);

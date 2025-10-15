@@ -6,9 +6,9 @@
 
 int main()
 {
-    ShrubberyCreationForm shrubbery("home");
+    ShrubberyCreationForm shrubbery("shrub");
     RobotomyRequestForm robotomy("robot");
-    PresidentialPardonForm pardon("Alice");
+    PresidentialPardonForm pardon("Xi");
     
     try
     {
@@ -26,11 +26,11 @@ int main()
     }
     try
     {
-        Bureaucrat alice("Alice", 40);
+        Bureaucrat gene("Gene", 40);
         std::cout << "\n--- Signing forms 2 ---\n";
-        alice.signForm(robotomy);
+        gene.signForm(robotomy);
         std::cout << "\n--- Executing forms 2 ---\n";
-        alice.executeForm(robotomy);
+        gene.executeForm(robotomy);
     }
     catch(const std::exception& e)
     {
@@ -38,11 +38,11 @@ int main()
     }
     try
     {
-        Bureaucrat carol("Carol", 4);
+        Bureaucrat arthur("Arthur", 4);
         std::cout << "\n--- Signing forms 3 ---\n";
-        carol.signForm(pardon);
+        arthur.signForm(pardon);
         std::cout << "\n--- Executing forms 3 ---\n";
-        carol.executeForm(pardon);
+        arthur.executeForm(pardon);
     }
     catch(const std::exception& e)
     {

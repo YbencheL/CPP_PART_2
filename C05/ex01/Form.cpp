@@ -40,7 +40,7 @@ Form& Form::operator=(const Form& obj)
 
 Form::~Form()
 {
-    std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 const std::string& Form::getName() const
@@ -78,4 +78,14 @@ std::ostream& operator<<(std::ostream& os, const Form& obj)
        << ", Grade to sign: " << obj.getSgrade()
        << ", Grade to execute: " << obj.getEgrade();
     return os;
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+    return "Grade is too high";
+}
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+    return "Grade is too low";
 }

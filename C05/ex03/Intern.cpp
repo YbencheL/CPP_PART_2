@@ -52,3 +52,8 @@ AForm* Intern::makeForm(std::string FormName, std::string target)
     std::cout << "Intern creates " << FormName << std::endl;
     return (this->*arr2[i])(target);
 }
+
+const char* Intern::FormNotAvb::what() const throw()
+{
+    return " : no such form";
+}

@@ -19,9 +19,7 @@ class Intern
         class FormNotAvb : public std::exception
         {
             public:
-                const char* what() const throw() {
-                    return " : no such form";
-                }
+                virtual const char* what() const throw();
         };
         AForm* Robotomy(const std::string& t);
         AForm* presidential(const std::string& t);

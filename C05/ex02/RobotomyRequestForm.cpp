@@ -26,6 +26,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm(targ
 void RobotomyRequestForm::executeAction() const
 {
     std::cout << "***LOUD DRILLING NOISES***" << std::endl;
+    srand(time(0));
     int rando = rand();
     if (rando % 2 == 0)
         std::cout << target << " HAS BEEN ROBOTOMIZED SUCCESSFULLY" << std::endl;

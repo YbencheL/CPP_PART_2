@@ -10,12 +10,15 @@ int main()
     {
         try
         {
-            std::cout << "\n--- Intern creating forms ---\n";
+            std::cout << "\n--- Intern is creating a form ---\n";
             Intern someRandomIntern;
             AForm* rrf;
             Bureaucrat yass("yass", 5);
             rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+            std::cout << "\n--- Intern is signing a form ---\n";
             yass.signForm(*rrf);
+            std::cout << "\n--- Intern is executing a form ---\n";
+            yass.executeForm(*rrf);
             delete rrf;
         }
         catch(const std::exception& e)
@@ -26,7 +29,7 @@ int main()
     {
         try
         {
-            std::cout << "\n--- Intern creating forms ---\n";
+            std::cout << "\n--- Intern is creating a form ---\n";
             Intern someRandomIntern;
             AForm* rrf;
             Bureaucrat vass("vass", 50);
@@ -39,7 +42,7 @@ int main()
             std::cerr << e.what() << '\n';
         }
     }
-    // ShrubberyCreationForm shrubbery("home");
+    // ShrubberyCreationForm shrubbery("shrub");
     // RobotomyRequestForm robotomy("robot");
     // PresidentialPardonForm pardon("Alice");
     // try

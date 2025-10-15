@@ -35,7 +35,7 @@ class Bureaucrat
                 const char* what() const throw() {
                     return "Grade is too low";
                 }
-        };
+        }; 
         void signForm(AForm& AForm);
         void executeForm(AForm const & AForm);
 

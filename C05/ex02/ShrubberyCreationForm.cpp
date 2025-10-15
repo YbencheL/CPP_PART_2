@@ -29,12 +29,12 @@ void ShrubberyCreationForm::executeAction() const
     std::ofstream outfile(filename.c_str());
     if (!outfile)
     {
-        std::cerr << "ERROR OPENING OUTPUT FILE" << std::endl;
+        std::runtime_error("ERROR OPENING OUTPUT FILE");
         return;
     }
     outfile << "                                                 .  "<< std::endl;
     outfile << "                                      .         ;    "<< std::endl;
-    outfile << "         .              .              ;%     ;;     "<< std::endl;
+    outfile << "         .              .              ;%     ;;"<< std::endl;
     outfile << "           ,           ,                :;%  %;     "<< std::endl;
     outfile << "            :         ;                   :;%;'     .,     "<< std::endl;
     outfile << "   ,.        %;     %;            ;        %;'    ,;  "<< std::endl;
@@ -51,13 +51,13 @@ void ShrubberyCreationForm::executeAction() const
     outfile << "                      %@bd%%%bd%%:;       "<< std::endl;
     outfile << "                        #@%%%%%:;;  "<< std::endl;
     outfile << "                        %@@%%%::;  "<< std::endl;
-    outfile << "                        %@@@%(o);  . '           "<< std::endl;
-    outfile << "                        %@@@o%;:(.,'           "<< std::endl;
-    outfile << "                    `.. %@@@o%::;           "<< std::endl;
-    outfile << "                       `)@@@o%::;           "<< std::endl;
-    outfile << "                        %@@(o)::;          "<< std::endl;
-    outfile << "                       .%@@@@%::;           "<< std::endl;
-    outfile << "                       ;%@@@@%::;.            "<< std::endl;
+    outfile << "                        %@@@%(o);  . '"<< std::endl;
+    outfile << "                        %@@@o%;:(.,'"<< std::endl;
+    outfile << "                    `.. %@@@o%::;"<< std::endl;
+    outfile << "                       `)@@@o%::;"<< std::endl;
+    outfile << "                        %@@(o)::;"<< std::endl;
+    outfile << "                       .%@@@@%::;"<< std::endl;
+    outfile << "                       ;%@@@@%::;."<< std::endl;
     outfile << "                      ;%@@@@%%:;;;.   "<< std::endl;
     outfile << "                  ...;%@@@@@%%:;;;;,..   "<< std::endl;
 }

@@ -39,18 +39,16 @@ AForm* Intern::Shrubbery(const std::string& t)
 AForm* Intern::makeForm(std::string FormName, std::string target)
 {
     const char* AvbFroms[] = {"robotomy request", "presidential pardon", "shrubbery creation"};
-    AForm* (Intern::*arr2[])(const std::string&) = {&Intern::Robotomy, &Intern::presidential ,&Intern::Shrubbery};
+    AForm* (Intern::*arr2[])(const std::string& t) = {&Intern::Robotomy, &Intern::presidential ,&Intern::Shrubbery};
 
     int i = 0;
-    while(FormName != AvbFroms[i] && i < 3)
-        i++;
-
     if(FormName != AvbFroms[0] && FormName != AvbFroms[1] && FormName != AvbFroms[2])
     {
-        std::cout << "ERROR: no such form" << std::endl;
-        return NULL;
+        std::cout << FormName;
+        throw FormNotAvb();
     }
-    
+    while(FormName != AvbFroms[i] && i < 3)
+        i++;
     std::cout << "Intern creates " << FormName << std::endl;
     return (this->*arr2[i])(target);
 }

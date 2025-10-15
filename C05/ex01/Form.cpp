@@ -10,7 +10,11 @@ Form::Form() : name("Default"), sign(false), s_grade(50), e_grade(50)
         throw GradeTooLowException();
 }
 
-Form::Form(const Form& obj) : name(obj.name), sign(obj.sign), s_grade(obj.s_grade), e_grade(obj.e_grade)
+Form::Form(const Form& obj):
+    name(obj.name),
+    sign(obj.sign),
+    s_grade(obj.s_grade),
+    e_grade(obj.e_grade)
 {
     if ((s_grade < 1) || (e_grade < 1))
         throw GradeTooHighException();

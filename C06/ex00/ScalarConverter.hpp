@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <iomanip> 
+#include <sstream> 
 
 
 class ScalarConverter
@@ -18,12 +19,12 @@ class ScalarConverter
     static void to_double(double conv);
     static void to_float(double conv);
     static void to_int(double conv);
-    static void to_char(double conv);
+    static void to_char(std::string conv);
     ~ScalarConverter();
 
     public:
     
-    static void convert(std::string conv);
+      static void convert(std::string conv);
 };
 
 #endif

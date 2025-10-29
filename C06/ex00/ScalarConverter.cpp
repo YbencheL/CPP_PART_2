@@ -12,17 +12,20 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& obj)
 
 ScalarConverter::~ScalarConverter() {}
 
-void ScalarConverter::to_char(double conv)
+void ScalarConverter::to_char(std::string conv)
 {
-    char c;
-
-    c = static_cast<char>(conv);
-    if (std::isnan(conv) || std::isinf(conv))
-        std::cout << "char: Impossible" << std::endl;
+    int convi = 0;
+    if (conv.length() == 1 && !std::isdigit(conv[0]))
+    {
+        char c = conv[0];
+        std::cout << "char: '" << c << "'" << std::endl;
+        return;
+    }
+    char c = static_cast<char>(convi);
+    if (convi < 0 || convi > 127)
+        std::cout << "char: impossible" << std::endl;
     else if (c < 32 || c > 126)
         std::cout << "char: Non displayable" << std::endl;
-    else
-        std::cout << "char: " << "'" << c << "'" << std::endl;
 }
 
 void ScalarConverter::to_int(double conv)
@@ -54,7 +57,7 @@ void ScalarConverter::convert(std::string conv)
     double convi;
 
     convi = atof(conv.c_str());
-    to_char(convi);
+    to_char(conv);
     to_int(convi);
     to_float(convi);
     to_double(convi);

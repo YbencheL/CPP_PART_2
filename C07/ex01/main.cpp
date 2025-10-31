@@ -11,8 +11,12 @@ void printInt(int &n) {
     std::cout << n << " ";
 }
 
-void printString(const std::string &s) {
+void printString(std::string &s) {
     std::cout << s << " ";
+}
+
+void printChar(const char &c) {
+    std::cout << c << " ";
 }
 
 void printMyClass(MyClass &obj) {
@@ -33,6 +37,13 @@ int main() {
     std::string words[] = {"hello", "world", "test"};
     std::cout << "String array: ";
     iter(words, 3, printString);
+    std::cout << std::endl;
+
+    std::cout << "=== Char Array test ===" << std::endl;
+
+    const char chars[] = {'a', 'b', 'c'};
+    std::cout << "Char array: ";
+    iter(chars, 3, printChar); 
     std::cout << std::endl;
 
     std::cout << "=== Object Array test ===" << std::endl;

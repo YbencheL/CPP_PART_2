@@ -3,6 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp
 
+HEADERS = Iter.hpp
+
 OBJ = $(SRC:.cpp=.o)
 
 all: iter
@@ -10,7 +12,7 @@ all: iter
 iter: $(OBJ)
 	$(CPP)  $(OBJ) -o iter
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 clean:

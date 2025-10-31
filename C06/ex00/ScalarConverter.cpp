@@ -15,6 +15,7 @@ ScalarConverter::~ScalarConverter() {}
 void ScalarConverter::to_char(std::string conv)
 {
     int convi = 0;
+\
     if (conv.length() == 1 && !std::isdigit(conv[0]))
     {
         char c = conv[0];

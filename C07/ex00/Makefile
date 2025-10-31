@@ -3,11 +3,14 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC =	 main.cpp
 
+HEADERS = whatever.hpp
+
+
 OBJ = $(SRC:.cpp=.o)
 
 all: whatever
 
-whatever: $(OBJ)
+whatever: $(OBJ) $(HEADERS)
 	$(CPP)  $(OBJ) -o whatever
 
 %.o: %.cpp

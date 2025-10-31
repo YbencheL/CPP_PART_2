@@ -3,6 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp
 
+HEADERS = Array.hpp
+
 OBJ = $(SRC:.cpp=.o)
 
 all: arr
@@ -10,7 +12,7 @@ all: arr
 arr: $(OBJ)
 	$(CPP)  $(OBJ) -o arr
 
-%.o: %.cpp
+%.o: %.cpp $(HEADERS)
 	$(CPP) $(CFLAGS) -c $< -o $@
 
 clean:

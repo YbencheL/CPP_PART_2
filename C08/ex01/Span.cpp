@@ -4,17 +4,19 @@ Span::Span() :  N(0) {}
 
 Span::Span(const Span &obj)
 {
-    N = obj.N;
+    this->N = obj.N;
+    this->arr = obj.arr;
 }
 
-Span::Span(unsigned int n) : N(n)
-{
-}
+Span::Span(unsigned int n) : N(n) {}
 
 Span& Span::operator=(const Span& obj)
 {
     if (this != &obj)
-        N = obj.N;
+    {
+        this->N = obj.N;
+        this->arr = obj.arr;
+    }
     return *this;
 }
 
@@ -28,8 +30,18 @@ void  Span::addNumber(int num)
         throw std::runtime_error("you've exceeded the max number of elements you can add");
 }
 
+void  Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+    if (arr.size() + std::distance(begin, end) > N)
+        throw std::runtime_error("you've exceeded the max number of elements you can add");
+    else
+        arr.insert(arr.end(), begin, end);
+}
+
 int Span::shortestSpan()
 {
+    if (arr.size() < 2)
+        throw std::runtime_error("not enough elements to get the shortestspan");
     std::vector<int> temp = arr;
     int min = std::numeric_limits<int>::max(); 
     int diff = 0; 
@@ -47,6 +59,8 @@ int Span::shortestSpan()
 
 int Span::longestSpan()
 {
+    if (arr.size() < 2)
+        throw std::runtime_error("not enough elements to get the longestspan");
     std::vector<int> temp = arr;
     std::vector<int>::iterator max = std::max_element(temp.begin(), temp.end());
     std::vector<int>::iterator min = std::min_element(temp.begin(), temp.end());

@@ -21,11 +21,13 @@ int main()
     std::cout << "\n========= Testing 20k numbers =========" << std::endl;
     try
     {
-        Span sp = Span(20000);
-        for (int i = 1; i < 20000; i++)
+        std::vector<int> v;
+        for (int i = 1; i <= 20000; i++)
         {
-            sp.addNumber(i);
+            v.push_back(i);
         }
+        Span sp = Span(20000);
+        sp.addNumber(v.begin(), v.end());
         std::cout << sp.shortestSpan() << std::endl;
         std::cout << sp.longestSpan() << std::endl;
     }
@@ -44,6 +46,16 @@ int main()
         sp.addNumber(11);
         sp.addNumber(11);
         std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        Span sp = Span(5);
+        sp.addNumber(6);
         std::cout << sp.longestSpan() << std::endl;
     }
     catch(const std::exception& e)

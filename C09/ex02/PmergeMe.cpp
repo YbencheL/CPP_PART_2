@@ -101,8 +101,6 @@ size_t Jacobsthal(int n)
 template <typename C>
 void sortThem(C& c)
 {
-    if (c.empty()) return;
-
     std::vector<int> winner;
     std::vector<int> loser;
     int struggle = 0;
@@ -111,14 +109,12 @@ void sortThem(C& c)
         struggle = c.back();
         c.pop_back();
     }
-
     for (size_t i = 0; i + 1 < c.size(); i += 2) {
         int a = c[i];
         int b = c[i + 1];
         winner.push_back(std::max(a, b));
         loser.push_back(std::min(a, b));
     }
-
     merge_Sort(winner);
     size_t j = 0;
     size_t i = 0;
@@ -184,6 +180,9 @@ void PmergeMe::parseToV(std::string arr)
         }
         start = end + 1;
     }
+    if (vec.size() == 1 || vec.empty())
+        return;
+    std::cout << "==============================" << std::endl;
     std::cout << "Before: ";
     for (size_t i = 0; i < vec.size(); i++)
         std::cout << vec[i] << " ";
@@ -191,11 +190,13 @@ void PmergeMe::parseToV(std::string arr)
     clock_t startT = clock();
     sortThem(vec);
     clock_t endT = clock();
-    double elapsed_micros = double(endT - startT) * 1000000 / CLOCKS_PER_SEC;
+    double elapsed_micros = (endT - startT) * 1000000 / CLOCKS_PER_SEC;
+    std::cout << "==============================" << std::endl;
     std::cout << "After: ";
     for (size_t i = 0; i < vec.size(); i++)
-        std::cout << vec[i] << " ";
+    std::cout << vec[i] << " ";
     std::cout << std::endl;
+    std::cout << "==============================" << std::endl;
     std::cout << "Time to process a range of " << std::fixed << vec.size() << " elements with std::vector : " << elapsed_micros << " us\n";
 }
 
@@ -222,31 +223,42 @@ void PmergeMe::parseToD(std::string arr)
         }
         start = end + 1;
     }
+    if (deq.size() == 1 || deq.empty())
+        return;
     clock_t startT = clock();
     sortThem(deq);
     clock_t endT = clock();
-    double elapsed_micros = double(endT - startT) * 1000000 / CLOCKS_PER_SEC;
+    double elapsed_micros = (endT - startT) * 1000000 / CLOCKS_PER_SEC;
     std::cout << "Time to process a range of " << std::fixed << deq.size() << " elements with std::deque : " << elapsed_micros << " us\n";
 }
 
 int main(int ac, char **av)
 {
-    if (ac != 2)
+    if (ac < 3)
     {
-        std::cerr << "ERROR: wrong number of arguments" << std::endl;
+        if (ac == 2)
+            std::cerr << "you've given only one argument!!!" << std::endl;
+        else
+            std::cerr << "ERROR: wrong number of arguments" << std::endl;
         return 1;
     }
-
     PmergeMe d;
 
+    std::string arr;
+    for (int i = 1; i < ac; ++i)
+    {
+        arr += av[i];
+        if (i < ac - 1)
+            arr += " ";
+    }
     try
     {
-        d.parseToV(av[1]);
+        d.parseToV(arr);
+        d.parseToD(arr);
     }
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
     
-    d.parseToD(av[1]);
 }

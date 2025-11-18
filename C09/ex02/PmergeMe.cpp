@@ -31,6 +31,20 @@ void merge_Sort(std::vector<int>& verr)
     merge(left, right, verr);
 }
 
+template <typename VD>
+void isSorted(VD& co)
+{
+    typename VD::iterator it;
+    for (it = co.begin(); it != co.end() - 1; ++it)
+    {
+        typename VD::iterator curr = it;
+        typename VD::iterator next = it + 1;
+        if (*curr > *next)
+            break;
+    }
+    if (it == co.end() - 1)
+        throw std::runtime_error("THE LIST OF ARGUMENTS IS ALREADY SORTED");
+}
 
 void merge(std::vector<int>& left, std::vector<int>& right, std::vector<int>& verr)
 {
@@ -105,6 +119,7 @@ void sortThem(C& c)
     std::vector<int> loser;
     int struggle = 0;
 
+
     if (c.size() % 2 != 0) {
         struggle = c.back();
         c.pop_back();
@@ -140,7 +155,14 @@ void sortThem(C& c)
         winner.insert(winner.begin() + index, struggle);
     }
     c.clear();
-    std::copy(winner.begin(), winner.end(), std::back_inserter(c)); 
+    std::copy(winner.begin(), winner.end(), std::back_inserter(c));
+    i = 0;
+    while(i < c.size() - 1)
+    {
+        if (c[i] == c[i + 1])
+            throw std::runtime_error("ERROR: process stopped, theres is a duplicate!!!");
+        i++;
+    }
 }
 
 
@@ -182,6 +204,7 @@ void PmergeMe::parseToV(std::string arr)
     }
     if (vec.size() == 1 || vec.empty())
         return;
+    isSorted(vec);
     std::cout << "==============================" << std::endl;
     std::cout << "Before: ";
     for (size_t i = 0; i < vec.size(); i++)

@@ -43,12 +43,13 @@ void RPN::divide(std::stack<int>& num_arr)
     int num2;
     
     if (num_arr.size() < 2)
-        throw std::runtime_error("ERROR: invalid expression");
+    throw std::runtime_error("ERROR: invalid expression");
     else if (num_arr.size() >= 2)
     {
         num1 = num_arr.top();
         num_arr.pop();
         num2 = num_arr.top();
+        if (num1 == 0) throw std::runtime_error("ERROR: division by zero");
         num_arr.pop();
         num1 = num2 / num1;
         num_arr.push(num1);
@@ -102,7 +103,7 @@ void RPN::calcRPN()
     end = 0;
     while(end != std::string::npos)
     {
-        end = value.find(" ", start);
+        end = value.find_first_of(" \t\n\v", start);
         std::string token = value.substr(start, end - start);
         if (!token.empty())
             arr.push(token);
@@ -148,7 +149,7 @@ int main(int ac, char **av)
     try
     {
         rpn.calcRPN();
-    }
+    }   
     catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';

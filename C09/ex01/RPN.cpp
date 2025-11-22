@@ -101,6 +101,8 @@ void RPN::calcRPN()
 
     start = 0;
     end = 0;
+    if (value.empty())
+        throw std::runtime_error("ERROR: empty value!!!");
     while(end != std::string::npos)
     {
         end = value.find_first_of(" \t\n\r", start);

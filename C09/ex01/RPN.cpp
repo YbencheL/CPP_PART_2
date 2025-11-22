@@ -98,19 +98,23 @@ void RPN::calcRPN()
     size_t start;
     std::string token;
     std::stack<int> num_arr;
+    size_t i;
 
     start = 0;
     end = 0;
-    if (value.empty())
-        throw std::runtime_error("ERROR: empty value!!!");
+    for (i = 0; i < value.size(); i++)
+    {
+        if (std::isdigit(value[i]))
+            break;
+    }
+    if (i == value.size())
+        throw std::runtime_error("ERROR: empty value");
     while(end != std::string::npos)
     {
         end = value.find_first_of(" \t\n\r", start);
         std::string token = value.substr(start, end - start);
         if (!token.empty())
             arr.push(token);
-        else
-            throw std::runtime_error("ERROR: empty value!!!");
         start = end + 1;
     }
     while (!arr.empty())

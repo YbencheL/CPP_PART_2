@@ -17,7 +17,6 @@ double closestTo(const std::map<Date, double>& map, const Date& _Date)
     return best->second;
 }
 
-
 std::string trim(std::string val)
 {
     size_t s = val.find_first_not_of(" \t\n\r");
@@ -86,7 +85,7 @@ int inputFileProcess(char *filename, std::map<Date, double>& map)
             else
                 rate = closestTo(map, _Date);
             result = rate * amount;
-            std::cout << date << " => " << std::fixed << std::setprecision(1) << amount << " = " << result << std::endl;
+            std::cout << date << " => " << amount << " = " << result << std::endl;
         }
         catch(const std::exception& e)
         {

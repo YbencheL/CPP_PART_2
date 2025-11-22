@@ -103,7 +103,7 @@ void RPN::calcRPN()
     end = 0;
     while(end != std::string::npos)
     {
-        end = value.find_first_of(" \t\n\v", start);
+        end = value.find_first_of(" \t\n\r", start);
         std::string token = value.substr(start, end - start);
         if (!token.empty())
             arr.push(token);

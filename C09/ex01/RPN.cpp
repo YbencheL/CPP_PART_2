@@ -109,6 +109,8 @@ void RPN::calcRPN()
         std::string token = value.substr(start, end - start);
         if (!token.empty())
             arr.push(token);
+        else
+            throw std::runtime_error("ERROR: empty value!!!");
         start = end + 1;
     }
     while (!arr.empty())

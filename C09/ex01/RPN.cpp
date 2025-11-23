@@ -108,7 +108,7 @@ void RPN::calcRPN()
             break;
     }
     if (i == value.size())
-        throw std::runtime_error("ERROR: empty value");
+        throw std::runtime_error("ERROR: ivalid expression");
     while(end != std::string::npos)
     {
         end = value.find_first_of(" \t\n\r", start);
